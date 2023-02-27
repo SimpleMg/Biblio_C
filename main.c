@@ -9,6 +9,10 @@ void gd_putchar(char c)
 
 int gd_len_nombre(int nbr)
 {
+    if(nbr < 0)
+    {
+        nbr *= -1;
+    }
     int longueur = 1;
     while(nbr > 10)
     {
@@ -21,6 +25,11 @@ int gd_len_nombre(int nbr)
 void gd_putnbr(int nbr)
 {
     int tmp = gd_len_nombre(nbr);
+    if(nbr < 0)
+    {
+        gd_putchar('-');
+        nbr *= -1;
+    }
     while(tmp > 0)
     {
         gd_putchar(nbr / tmp + '0');
@@ -47,6 +56,6 @@ void gd_putstr(char *str)
 
 int main()
 {
-    gd_putnbr(254);
+    gd_putnbr(-254);
     gd_putchar('\n');
 }
