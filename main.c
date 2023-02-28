@@ -54,13 +54,15 @@ int puissance_10(int nbr)
     }
     return res;
 }
+
+
 int gd_atoi(char *str)
 {
 
     int i = 0;
-    int nbr = 0;
     int nega = 1;
-    while((str[i] == '-') || (str[i] >= '0' && str[i] <= '9'))
+    int nbr = 0;
+    while((str[i]))
     {
         if(str[i] == '-')
         {
@@ -68,19 +70,15 @@ int gd_atoi(char *str)
         }
         i++;
     }
-    int j = 0;
-    if(nega == -1)
+    i = 0;
+    while(str[i])
     {
-        i--;
-        j = 1;
-    }
-    int len;
-    len = puissance_10(i);
-    while(str[j] >= '0' && str[j] <= '9')
-    {
-        nbr += (str[j] - '0') * len;
-        len /= 10;
-        j++;
+        i++;
+        if(str[i] >= '0' && str[i] <= '9')
+        {
+            nbr = (nbr * 10) + (str[i] - '0');
+            
+        }
     }
     return nbr * nega;
 }
@@ -94,7 +92,7 @@ int main()
 {
     gd_putnbr(-254);
     gd_putchar('\n');
-    int gd = gd_atoi("-129299284ddcdv");
+    int gd = gd_atoi("nhjg-129299284ddcdv");
     gd_putnbr(gd);
     gd_putchar('\n');
 }
