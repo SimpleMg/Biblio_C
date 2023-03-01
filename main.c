@@ -202,6 +202,10 @@ int *tri_bulles(int* tab, int taille)
     return tab;
 }
 
+int gd_abs(int nbr)
+{   
+    return (nbr > 0) ? nbr : -nbr;
+}
 
 int *gd_tri_insertion(int *tab_int, int taille)
 {
@@ -227,18 +231,20 @@ int *gd_tri_insertion(int *tab_int, int taille)
 
 int main(void)
 {
+    gd_putstr("putnbr : ");
     gd_putnbr(-25393943);
     gd_putchar('\n');
+    gd_putstr("atoi : ");
     int gd = gd_atoi("nhjg129299284ddcdv");
     gd_putnbr(gd);
     gd_putchar('\n');
     char *copy_str = gd_strdup("Hello");
-    printf("%s\n", copy_str);
+    printf("chaine copier : %s\n", copy_str);
     free(copy_str);
     char *str_join = gd_strjoin("Hello ", "World");
-    printf("%s\n", str_join);
+    printf("concatenation de deux chaines : %s\n", str_join);
     char *reverse_str = gd_reverse_str(str_join);
-    printf("%s\n", reverse_str);
+    printf("chaine reverse : %s\n", reverse_str);
     free(reverse_str);
     free(str_join);
     /*TRIE*/
@@ -264,7 +270,8 @@ int main(void)
     /*fin test des trie*/
     gd_putstr("FIN TEST DES TRIES\n");
     int puissance_calc = puissance(2,8);
-    printf("%d\n", puissance_calc);
+    printf("puissance de 2^8 : %d\n", puissance_calc);
+    printf("valeur abs : %d\n", gd_abs(-8));
     return 0;
     
 }
