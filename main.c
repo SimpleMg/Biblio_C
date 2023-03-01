@@ -209,11 +209,7 @@ int gd_abs(int nbr)
 
 int gd_isdigit(char nbr)
 {
-    if(nbr >= '0' && nbr <= '9')
-    {
-        return 1;
-    }
-    return 0;
+    return (nbr >= '0' && nbr <= '9') ? 1 : 0;
 }
 
 int *gd_tri_insertion(int *tab_int, int taille)
