@@ -157,7 +157,7 @@ void gd_putnbr(int nbr)
 
 int main(void)
 {
-    gd_putnbr(-254393943);
+    gd_putnbr(-25393943);
     gd_putchar('\n');
     int gd = gd_atoi("nhjg129299284ddcdv");
     gd_putnbr(gd);
@@ -171,5 +171,4 @@ int main(void)
     printf("%s\n", reverse_str);
     free(reverse_str);
     free(str_join);
-    
 }
