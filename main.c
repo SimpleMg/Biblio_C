@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+
 void gd_putchar(char c)
 {
     write(1, &c, 1);
@@ -36,6 +37,8 @@ char* gd_strdup(char *str)
         return NULL;
     }
 }
+
+
 int gd_len_nombre(int nbr)
 {
     int longueur = 1;
@@ -61,6 +64,10 @@ int puissance_10(int nbr)
     return res;
 }
 
+int gd_len_tab(int *tab, int taille)
+{
+    return taille / sizeof(tab[0]);
+}
 
 int gd_atoi(char *str)
 {
@@ -84,6 +91,7 @@ int gd_atoi(char *str)
     }
     return nbr * nega;
 }
+
 
 char* gd_strjoin(char const *s1, char const *s2)
 {
@@ -110,6 +118,7 @@ char* gd_strjoin(char const *s1, char const *s2)
         return NULL;
     }
 }
+
 
 void gd_putstr(char *str)
 {
@@ -155,6 +164,29 @@ void gd_putnbr(int nbr)
     gd_putstr(str_nbre);
 }
 
+
+int *gd_tri_insertion(int *tab_int, int taille)
+{
+    int i = 2;
+    int cle = 0;
+    int j = 0;
+    int len_tab = gd_len_tab(tab_int, taille);
+    while(i < len_tab)
+    {
+        cle = tab_int[i];
+        j = i - 1;
+        while(j > 0 && tab_int[j] > cle)
+        {
+            tab_int[j + 1] = tab_int[j];
+            j--;
+        }
+        tab_int[j + 1] = cle;
+        i++;
+    }
+    return tab_int;
+}
+
+
 int main(void)
 {
     gd_putnbr(-25393943);
@@ -171,4 +203,14 @@ int main(void)
     printf("%s\n", reverse_str);
     free(reverse_str);
     free(str_join);
+    int i = 0;
+    int tab_int[6] = {1,0,3,9,8,3};
+    int* trier_tab = gd_tri_insertion(tab_int, sizeof(tab_int));
+    while(i <= gd_len_tab(tab_int, sizeof(tab_int)))
+    {
+        printf("%d\n", trier_tab[i]);
+        i++;
+    }
+    return 0;
+    
 }
