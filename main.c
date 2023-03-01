@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 void gd_putchar(char c)
@@ -6,6 +7,35 @@ void gd_putchar(char c)
     write(1, &c, 1);
 }
 
+int gd_strlen(const char *str)
+{
+    int i = 0;
+    while(str[i] != '\0')
+    {
+        i++;
+    }
+    return i;
+}
+
+char* str_dup(const char *str)
+{
+    char *ret = (char*)malloc(sizeof(char) * gd_strlen(str + 1));
+    if(ret != NULL)
+    {
+        int i = 0;
+        while(str[i])
+        {
+            ret[i] = str[i];
+            i++;
+        }
+        ret[i] = '\0';
+        return ret;
+    }
+    else
+    {
+        return NULL;
+    }
+}
 int gd_len_nombre(int nbr)
 {
     int longueur = 1;
@@ -33,15 +63,6 @@ void gd_putnbr(int nbr)
     }
 }
 
-int gd_strlen(char *str)
-{
-    int i = 0;
-    while(str[i] != '\0')
-    {
-        i++;
-    }
-    return i;
-}
 
 int puissance_10(int nbr)
 {
@@ -91,4 +112,7 @@ int main()
     int gd = gd_atoi("nhjg129299284ddcdv");
     gd_putnbr(gd);
     gd_putchar('\n');
+    char *copy_str = str_dup("Hello World");
+    printf("%s\n", copy_str);
+    
 }
