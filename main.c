@@ -64,6 +64,19 @@ int puissance_10(int nbr)
     return res;
 }
 
+int puissance(int nbr, int puissance)
+{
+    int i = 0;
+    int nbr_puissance = 1;
+    while(i<puissance)
+    {
+        nbr_puissance *= nbr;
+        i++;
+    }
+    return nbr_puissance;
+}
+
+
 int gd_len_tab(int *tab, int taille)
 {
     return taille / sizeof(tab[0]);
@@ -206,11 +219,13 @@ int main(void)
     int i = 0;
     int tab_int[6] = {1,0,3,9,8,3};
     int* trier_tab = gd_tri_insertion(tab_int, sizeof(tab_int));
-    while(i <= gd_len_tab(tab_int, sizeof(tab_int)))
+    while(i < gd_len_tab(tab_int, sizeof(tab_int)))
     {
         printf("%d\n", trier_tab[i]);
         i++;
     }
+    int puissance_calc = puissance(2,8);
+    printf("%d\n", puissance_calc);
     return 0;
     
 }
