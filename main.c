@@ -154,6 +154,7 @@ char* gd_reverse_str(char *str)
     return reverse_str;
 }
 
+
 void gd_putnbr(int nbr)
 {
     char *tampon = (char*)malloc(sizeof(char) * 12);
@@ -175,6 +176,30 @@ void gd_putnbr(int nbr)
     }
     str_nbre[gd_strlen(str_nbre)] = '\0';
     gd_putstr(str_nbre);
+}
+
+int *tri_bulles(int* tab, int taille)
+{
+    int len_tab = gd_len_tab(tab, taille);
+    int i = len_tab - 1;
+    int j = 0;
+    int tmp = 0;
+    while(i >= 1)
+    {
+        while(j < i)
+        {
+            if(tab[j+1] < tab[j])
+            {
+                tmp = tab[j];
+                tab[j] = tab[j+1];
+                tab[j+1] = tmp;
+            }
+            j++;
+        }
+        j = 0;
+        i--;
+    }
+    return tab;
 }
 
 
@@ -216,14 +241,28 @@ int main(void)
     printf("%s\n", reverse_str);
     free(reverse_str);
     free(str_join);
+    /*TRIE*/
+    gd_putstr("TEST DES TRIES\n");
     int i = 0;
     int tab_int[6] = {1,0,3,9,8,3};
     int* trier_tab = gd_tri_insertion(tab_int, sizeof(tab_int));
+    gd_putstr("Trie insertion\n");
     while(i < gd_len_tab(tab_int, sizeof(tab_int)))
     {
         printf("%d\n", trier_tab[i]);
         i++;
     }
+    int tab_int2[5] = {5,1,4,2,8};
+    int *tab_trier = tri_bulles(tab_int2, sizeof(tab_int2));
+    i = 0;
+    gd_putstr("Trie bulle\n");
+    while(i < gd_len_tab(tab_int2, sizeof(tab_int2)))
+    {
+        printf("%d\n", tab_trier[i]);
+        i++;
+    }
+    /*fin test des trie*/
+    gd_putstr("FIN TEST DES TRIES\n");
     int puissance_calc = puissance(2,8);
     printf("%d\n", puissance_calc);
     return 0;
