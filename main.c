@@ -134,8 +134,10 @@ char* gd_reverse_str(char *str)
 
 void gd_putnbr(int nbr)
 {
-    char* str_nbre = (char*)malloc(sizeof(char) * 12);
-    if(nbr<0)
+    char *tampon = (char*)malloc(sizeof(char) * 12);
+    char* str_nbre = tampon;
+    int i = 0;
+    if(nbr < 0)
     {
         str_nbre[0] = '-';
         nbr *= -1;
@@ -143,15 +145,17 @@ void gd_putnbr(int nbr)
     int tmp = gd_len_nombre(nbr);
     while(tmp > 0)
     {
-        char chiff = (nbr/tmp) + '0';
-        str_nbre[gd_strlen(str_nbre)] = chiff;
+        char chiff = nbr / tmp + '0';
+        str_nbre = gd_strjoin(str_nbre, &chiff);
         nbr %= tmp;
         tmp /= 10;
+        i++;
     }
+    str_nbre[gd_strlen(str_nbre)] = '\0';
     gd_putstr(str_nbre);
 }
 
-int main()
+int main(void)
 {
     gd_putnbr(-254393943);
     gd_putchar('\n');
