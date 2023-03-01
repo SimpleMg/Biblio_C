@@ -114,5 +114,6 @@ int main()
     gd_putchar('\n');
     char *copy_str = str_dup("Hello World");
     printf("%s\n", copy_str);
+    free(copy_str);
     
 }
