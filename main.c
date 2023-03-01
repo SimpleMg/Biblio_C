@@ -207,6 +207,15 @@ int gd_abs(int nbr)
     return (nbr > 0) ? nbr : -nbr;
 }
 
+int gd_isdigit(char nbr)
+{
+    if(nbr >= '0' && nbr <= '9')
+    {
+        return 1;
+    }
+    return 0;
+}
+
 int *gd_tri_insertion(int *tab_int, int taille)
 {
     int i = 2;
@@ -272,6 +281,9 @@ int main(void)
     int puissance_calc = puissance(2,8);
     printf("puissance de 2^8 : %d\n", puissance_calc);
     printf("valeur abs : %d\n", gd_abs(-8));
+    char test_digit = '9';
+    printf("%d is digit : \n", test_digit);
+    (gd_isdigit(test_digit)) ? gd_putstr("oui\n") : gd_putstr("non\n");
     return 0;
     
 }
