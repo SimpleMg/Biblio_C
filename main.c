@@ -62,14 +62,6 @@ int gd_atoi(char *str)
     int i = 0;
     int nega = 1;
     int nbr = 0;
-    while((str[i]))
-    {
-        if(str[i] == '-')
-        {
-            nega = -1;
-        }
-        i++;
-    }
     i = 0;
     while(str[i])
     {
@@ -78,6 +70,10 @@ int gd_atoi(char *str)
         {
             nbr = (nbr * 10) + (str[i] - '0');
             
+        }
+        else if(str[i] == '-')
+        {
+            nega = -1;
         }
     }
     return nbr * nega;
@@ -92,7 +88,7 @@ int main()
 {
     gd_putnbr(-254);
     gd_putchar('\n');
-    int gd = gd_atoi("nhjg-129299284ddcdv");
+    int gd = gd_atoi("nhjg129299284ddcdv");
     gd_putnbr(gd);
     gd_putchar('\n');
 }
