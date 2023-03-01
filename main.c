@@ -233,6 +233,39 @@ int *gd_tri_insertion(int *tab_int, int taille)
     return tab_int;
 }
 
+int gd_max_tab(int *tab, int taille)
+{
+    int len_tab = gd_len_tab(tab, taille);
+    int i = 0;
+    int max = tab[0];
+    while(i < len_tab)
+    {
+        if(tab[i] > max)
+        {
+            max = tab[i];
+        }
+        i++;
+    }
+    return max;
+    
+}
+
+int gd_min_tab(int *tab, int taille)
+{
+    int len_tab = gd_len_tab(tab, taille);
+    int i = 0;
+    int min = tab[0];
+    while(i < len_tab)
+    {
+        if(tab[i] < min)
+        {
+            min = tab[i];
+        }
+        i++;
+    }
+    return min;
+    
+}
 
 int main(void)
 {
@@ -280,6 +313,9 @@ int main(void)
     char test_digit = '9';
     printf("%d is digit : \n", test_digit);
     (gd_isdigit(test_digit)) ? gd_putstr("oui\n") : gd_putstr("non\n");
+    int tab_int3[5] = {1,8,10,182,2};
+    printf("max : %d\n", gd_max_tab(tab_int3, sizeof(tab_int3)));
+    printf("min : %d\n", gd_min_tab(tab_int3, sizeof(tab_int3)));
     return 0;
     
 }
