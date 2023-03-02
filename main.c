@@ -178,7 +178,7 @@ void mg_putnbr(int nbr)
     mg_putstr(str_nbre);
 }
 
-int *tri_bulles(int* tab, int taille)
+int *mg_tri_bulles(int* tab, int taille)
 {
     int len_tab = mg_len_tab(tab, taille);
     int i = len_tab - 1;
@@ -285,28 +285,28 @@ int main(void)
     printf("chaine reverse : %s\n", reverse_str);
     free(reverse_str);
     free(str_join);
-    /*TRIE*/
-    mg_putstr("TEST DES TRIES\n");
+    /*TRIS*/
+    mg_putstr("TEST DES TRIS\n");
     int i = 0;
     int tab_int[6] = {1,0,3,9,8,3};
     int* trier_tab = mg_tri_insertion(tab_int, sizeof(tab_int));
-    mg_putstr("Trie insertion\n");
+    mg_putstr("Tri insertion\n");
     while(i < mg_len_tab(tab_int, sizeof(tab_int)))
     {
         printf("%d\n", trier_tab[i]);
         i++;
     }
     int tab_int2[5] = {5,1,4,2,8};
-    int *tab_trier = tri_bulles(tab_int2, sizeof(tab_int2));
+    int *tab_trier = mg_tri_bulles(tab_int2, sizeof(tab_int2));
     i = 0;
-    mg_putstr("Trie bulle\n");
+    mg_putstr("Tri bulle\n");
     while(i < mg_len_tab(tab_int2, sizeof(tab_int2)))
     {
         printf("%d\n", tab_trier[i]);
         i++;
     }
-    /*fin test des trie*/
-    mg_putstr("FIN TEST DES TRIES\n");
+    /*fin test des tris*/
+    mg_putstr("FIN TEST DES TRIS\n");
     int puissance_calc = puissance(2,8);
     printf("puissance de 2^8 : %d\n", puissance_calc);
     printf("valeur abs : %d\n", mg_abs(-8));
