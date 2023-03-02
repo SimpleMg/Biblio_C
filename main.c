@@ -3,12 +3,12 @@
 #include <unistd.h>
 
 
-void gd_putchar(char c)
+void mg_putchar(char c)
 {
     write(1, &c, 1);
 }
 
-int gd_strlen(const char *str)
+int mg_strlen(const char *str)
 {
     int i = 0;
     while(str[i] != '\0')
@@ -18,9 +18,9 @@ int gd_strlen(const char *str)
     return i;
 }
 
-char* gd_strdup(char *str)
+char* mg_strdup(char *str)
 {
-    char *ret = (char*)malloc(sizeof(char) * gd_strlen(str + 1));
+    char *ret = (char*)malloc(sizeof(char) * mg_strlen(str + 1));
     if(ret != NULL)
     {
         int i = 0;
@@ -39,7 +39,7 @@ char* gd_strdup(char *str)
 }
 
 
-int gd_len_nombre(int nbr)
+int mg_len_nombre(int nbr)
 {
     int longueur = 1;
     while(nbr > 10)
@@ -77,12 +77,12 @@ int puissance(int nbr, int puissance)
 }
 
 
-int gd_len_tab(int *tab, int taille)
+int mg_len_tab(int *tab, int taille)
 {
     return taille / sizeof(tab[0]);
 }
 
-int gd_atoi(char *str)
+int mg_atoi(char *str)
 {
 
     int i = 0;
@@ -106,9 +106,9 @@ int gd_atoi(char *str)
 }
 
 
-char* gd_strjoin(char const *s1, char const *s2)
+char* mg_strjoin(char const *s1, char const *s2)
 {
-    char *ret = (char*)malloc(sizeof(char) * (gd_strlen(s1) + gd_strlen(s2)) + 1);
+    char *ret = (char*)malloc(sizeof(char) * (mg_strlen(s1) + mg_strlen(s2)) + 1);
     int i = 0;
     int j = 0;
     if(ret != NULL)
@@ -133,14 +133,14 @@ char* gd_strjoin(char const *s1, char const *s2)
 }
 
 
-void gd_putstr(char *str)
+void mg_putstr(char *str)
 {
-    write(1, str, gd_strlen(str));
+    write(1, str, mg_strlen(str));
 }
 
-char* gd_reverse_str(char *str)
+char* mg_reverse_str(char *str)
 {
-    int len_str = gd_strlen(str);
+    int len_str = mg_strlen(str);
     char *reverse_str = (char*)malloc(sizeof(char) * len_str + 1);
     int i = 0;
     len_str--;
@@ -155,7 +155,7 @@ char* gd_reverse_str(char *str)
 }
 
 
-void gd_putnbr(int nbr)
+void mg_putnbr(int nbr)
 {
     char *tampon = (char*)malloc(sizeof(char) * 12);
     char* str_nbre = tampon;
@@ -165,22 +165,22 @@ void gd_putnbr(int nbr)
         str_nbre[0] = '-';
         nbr *= -1;
     }
-    int tmp = gd_len_nombre(nbr);
+    int tmp = mg_len_nombre(nbr);
     while(tmp > 0)
     {
         char chiff = nbr / tmp + '0';
-        str_nbre = gd_strjoin(str_nbre, &chiff);
+        str_nbre = mg_strjoin(str_nbre, &chiff);
         nbr %= tmp;
         tmp /= 10;
         i++;
     }
-    str_nbre[gd_strlen(str_nbre)] = '\0';
-    gd_putstr(str_nbre);
+    str_nbre[mg_strlen(str_nbre)] = '\0';
+    mg_putstr(str_nbre);
 }
 
 int *tri_bulles(int* tab, int taille)
 {
-    int len_tab = gd_len_tab(tab, taille);
+    int len_tab = mg_len_tab(tab, taille);
     int i = len_tab - 1;
     int j = 0;
     int tmp = 0;
@@ -202,22 +202,22 @@ int *tri_bulles(int* tab, int taille)
     return tab;
 }
 
-int gd_abs(int nbr)
+int mg_abs(int nbr)
 {   
     return (nbr > 0) ? nbr : -nbr;
 }
 
-int gd_isdigit(char nbr)
+int mg_isdigit(char nbr)
 {
     return (nbr >= '0' && nbr <= '9') ? 1 : 0;
 }
 
-int *gd_tri_insertion(int *tab_int, int taille)
+int *mg_tri_insertion(int *tab_int, int taille)
 {
     int i = 2;
     int cle = 0;
     int j = 0;
-    int len_tab = gd_len_tab(tab_int, taille);
+    int len_tab = mg_len_tab(tab_int, taille);
     while(i < len_tab)
     {
         cle = tab_int[i];
@@ -233,9 +233,9 @@ int *gd_tri_insertion(int *tab_int, int taille)
     return tab_int;
 }
 
-int gd_max_tab(int *tab, int taille)
+int mg_max_tab(int *tab, int taille)
 {
-    int len_tab = gd_len_tab(tab, taille);
+    int len_tab = mg_len_tab(tab, taille);
     int i = 0;
     int max = tab[0];
     while(i < len_tab)
@@ -250,9 +250,9 @@ int gd_max_tab(int *tab, int taille)
     
 }
 
-int gd_min_tab(int *tab, int taille)
+int mg_min_tab(int *tab, int taille)
 {
-    int len_tab = gd_len_tab(tab, taille);
+    int len_tab = mg_len_tab(tab, taille);
     int i = 0;
     int min = tab[0];
     while(i < len_tab)
@@ -269,29 +269,29 @@ int gd_min_tab(int *tab, int taille)
 
 int main(void)
 {
-    gd_putstr("putnbr : ");
-    gd_putnbr(-25393943);
-    gd_putchar('\n');
-    gd_putstr("atoi : ");
-    int gd = gd_atoi("nhjg129299284ddcdv");
-    gd_putnbr(gd);
-    gd_putchar('\n');
-    char *copy_str = gd_strdup("Hello");
+    mg_putstr("putnbr : ");
+    mg_putnbr(-25393943);
+    mg_putchar('\n');
+    mg_putstr("atoi : ");
+    int gd = mg_atoi("nhjg129299284ddcdv");
+    mg_putnbr(gd);
+    mg_putchar('\n');
+    char *copy_str = mg_strdup("Hello");
     printf("chaine copier : %s\n", copy_str);
     free(copy_str);
-    char *str_join = gd_strjoin("Hello ", "World");
+    char *str_join = mg_strjoin("Hello ", "World");
     printf("concatenation de deux chaines : %s\n", str_join);
-    char *reverse_str = gd_reverse_str(str_join);
+    char *reverse_str = mg_reverse_str(str_join);
     printf("chaine reverse : %s\n", reverse_str);
     free(reverse_str);
     free(str_join);
     /*TRIE*/
-    gd_putstr("TEST DES TRIES\n");
+    mg_putstr("TEST DES TRIES\n");
     int i = 0;
     int tab_int[6] = {1,0,3,9,8,3};
-    int* trier_tab = gd_tri_insertion(tab_int, sizeof(tab_int));
-    gd_putstr("Trie insertion\n");
-    while(i < gd_len_tab(tab_int, sizeof(tab_int)))
+    int* trier_tab = mg_tri_insertion(tab_int, sizeof(tab_int));
+    mg_putstr("Trie insertion\n");
+    while(i < mg_len_tab(tab_int, sizeof(tab_int)))
     {
         printf("%d\n", trier_tab[i]);
         i++;
@@ -299,23 +299,23 @@ int main(void)
     int tab_int2[5] = {5,1,4,2,8};
     int *tab_trier = tri_bulles(tab_int2, sizeof(tab_int2));
     i = 0;
-    gd_putstr("Trie bulle\n");
-    while(i < gd_len_tab(tab_int2, sizeof(tab_int2)))
+    mg_putstr("Trie bulle\n");
+    while(i < mg_len_tab(tab_int2, sizeof(tab_int2)))
     {
         printf("%d\n", tab_trier[i]);
         i++;
     }
     /*fin test des trie*/
-    gd_putstr("FIN TEST DES TRIES\n");
+    mg_putstr("FIN TEST DES TRIES\n");
     int puissance_calc = puissance(2,8);
     printf("puissance de 2^8 : %d\n", puissance_calc);
-    printf("valeur abs : %d\n", gd_abs(-8));
+    printf("valeur abs : %d\n", mg_abs(-8));
     char test_digit = '9';
     printf("%d is digit : \n", test_digit);
-    (gd_isdigit(test_digit)) ? gd_putstr("oui\n") : gd_putstr("non\n");
+    (mg_isdigit(test_digit)) ? mg_putstr("oui\n") : mg_putstr("non\n");
     int tab_int3[5] = {1,8,10,182,2};
-    printf("max : %d\n", gd_max_tab(tab_int3, sizeof(tab_int3)));
-    printf("min : %d\n", gd_min_tab(tab_int3, sizeof(tab_int3)));
+    printf("max : %d\n", mg_max_tab(tab_int3, sizeof(tab_int3)));
+    printf("min : %d\n", mg_min_tab(tab_int3, sizeof(tab_int3)));
     return 0;
     
 }
