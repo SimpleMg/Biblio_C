@@ -302,7 +302,21 @@ int mg_isneg(int nbr)
     return (nbr < 0) ? 1 : 0;
 }
 
-
+int mg_ispalindrome(char *str)
+{
+    char *duplique = mg_strdup(str);
+    duplique = mg_reverse_str(duplique);
+    int i = 0;
+    while(i < mg_strlen(str))
+    {
+        if(str[i] != duplique[i])
+        {
+            return 0;
+        }
+        i++;
+    }
+    return 1;
+}
 
 int main(void)
 {
@@ -365,6 +379,9 @@ int main(void)
     int test_isneg = -9;
     printf("%d est négatif ?\n", test_isneg);
     (mg_isneg(test_isneg)) ? mg_putstr("OUI\n") : mg_putstr("NON\n");
+    char *is_plaindrome = "kayak";
+    printf("%s est un Palindrome\n", is_plaindrome);
+    (mg_ispalindrome(is_plaindrome)) ? mg_putstr("oui\n") : mg_putstr("non\n");
     return 0;
     
 }
