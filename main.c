@@ -267,6 +267,43 @@ int mg_min_tab(int *tab, int taille)
     
 }
 
+void mg_affiche_alphabet(void)
+{
+    char lettre = 'a';
+    while(lettre <= 'z')
+    {
+        mg_putchar(lettre);
+        lettre++;
+    }
+}
+
+void mg_reverse_alphabet(void)
+{
+    char lettre = 'z';
+    while(lettre >= 'a')
+    {
+        mg_putchar(lettre);
+        lettre--;
+    }
+}
+
+void mg_affiche_chiffre(void)
+{
+    char chiffre = '0';
+    while(chiffre <= '9')
+    {
+        mg_putchar(chiffre);
+        chiffre++;
+    }
+}
+
+int mg_isneg(int nbr)
+{
+    return (nbr < 0) ? 1 : 0;
+}
+
+
+
 int main(void)
 {
     mg_putstr("putnbr : ");
@@ -316,6 +353,18 @@ int main(void)
     int tab_int3[5] = {1,8,10,182,2};
     printf("max : %d\n", mg_max_tab(tab_int3, sizeof(tab_int3)));
     printf("min : %d\n", mg_min_tab(tab_int3, sizeof(tab_int3)));
+    mg_putstr("ALPHABET\n");
+    mg_affiche_alphabet();
+    mg_putchar('\n');
+    mg_putstr("ALPHABET INVERSE\n");
+    mg_reverse_alphabet();
+    mg_putchar('\n');
+    mg_putstr("CHIFFRES\n");
+    mg_affiche_chiffre();
+    mg_putchar('\n');
+    int test_isneg = -9;
+    printf("%d est négatif ?\n", test_isneg);
+    (mg_isneg(test_isneg)) ? mg_putstr("OUI\n") : mg_putstr("NON\n");
     return 0;
     
 }
