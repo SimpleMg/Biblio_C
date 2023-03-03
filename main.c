@@ -214,7 +214,7 @@ int mg_isdigit(char nbr)
 
 int *mg_tri_insertion(int *tab_int, int taille)
 {
-    int i = 2;
+    int i = 1;
     int cle = 0;
     int j = 0;
     int len_tab = mg_len_tab(tab_int, taille);
@@ -222,7 +222,7 @@ int *mg_tri_insertion(int *tab_int, int taille)
     {
         cle = tab_int[i];
         j = i - 1;
-        while(j > 0 && tab_int[j] > cle)
+        while(j >= 0 && tab_int[j] > cle)
         {
             tab_int[j + 1] = tab_int[j];
             j--;
